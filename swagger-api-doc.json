@@ -1,0 +1,346 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Api Documentation",
+    "version": "1.0",
+    "title": "Api Documentation",
+    "termsOfService": "urn:tos",
+    "contact": {},
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "api-gateway-controller",
+      "description": "Store information about these gateways and their associated devices, as well as obtain information about the devices associated with the gateways"
+    },
+    {
+      "name": "api-peripheral-controller",
+      "description": "Update or remove devices from a gateway"
+    }
+  ],
+  "paths": {
+    "/api/gateway/add": {
+      "post": {
+        "tags": [
+          "api-gateway-controller"
+        ],
+        "summary": "Add a gateway and their peripheral",
+        "operationId": "addGatewayUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "gatewayDto",
+            "description": "Json with gateway data",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GatewayDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MessageEventDto"
+            }
+          },
+          "201": {
+            "description": "Gateway created successfully ",
+            "schema": {
+              "$ref": "#/definitions/MessageEventDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "An error occur creating gateway"
+          }
+        }
+      }
+    },
+    "/api/gateway/all": {
+      "get": {
+        "tags": [
+          "api-gateway-controller"
+        ],
+        "summary": "Get all gateways stored",
+        "operationId": "getAllGatewaysUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "List of all gateways stored",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/GatewayDto"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Error getting all gateways stored"
+          }
+        }
+      }
+    },
+    "/api/gateway/delete/{idGateway}/{idPeripheral}": {
+      "delete": {
+        "tags": [
+          "api-peripheral-controller"
+        ],
+        "summary": "Delete a device from a gateway",
+        "operationId": "deleteGatewayDeviceUsingDELETE",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "peripheralDeviceDto",
+            "description": "Json with device to be deleted",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PeripheralDeviceDto"
+            }
+          },
+          {
+            "name": "idGateway",
+            "in": "path",
+            "description": "Gateway id that will be updated",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "idPeripheral",
+            "in": "path",
+            "description": "Device id that will be delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Device updated",
+            "schema": {
+              "$ref": "#/definitions/GatewayDto"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Device not found"
+          },
+          "500": {
+            "description": "Error deleting a device from gateway"
+          }
+        }
+      }
+    },
+    "/api/gateway/detail/{id}": {
+      "get": {
+        "tags": [
+          "api-gateway-controller"
+        ],
+        "summary": "Get details of a gateway",
+        "operationId": "getGatewayDetailUsingGET",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of gateway store",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Gateway found",
+            "schema": {
+              "$ref": "#/definitions/GatewayDto"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Gateway not found"
+          },
+          "500": {
+            "description": "Error getting gateways detail"
+          }
+        }
+      }
+    },
+    "/api/gateway/update/{id}": {
+      "put": {
+        "tags": [
+          "api-peripheral-controller"
+        ],
+        "summary": "Add a device to gateway",
+        "operationId": "addDeviceToGatewayUsingPUT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "peripheralDeviceDto",
+            "description": "Json with device to be added to gateway",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PeripheralDeviceDto"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Gateway id that will be updated",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Gateway updated",
+            "schema": {
+              "$ref": "#/definitions/GatewayDto"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Gateway not found"
+          },
+          "500": {
+            "description": "Error updating gateways detail"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "GatewayDto": {
+      "type": "object",
+      "properties": {
+        "ipAddress": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "peripheralDevices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PeripheralDeviceDto"
+          }
+        },
+        "serialNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "MessageEventDto": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "message": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "ERROR",
+            "INFO",
+            "WARN"
+          ]
+        }
+      }
+    },
+    "PeripheralDeviceDto": {
+      "type": "object",
+      "properties": {
+        "dateCreated": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "ONLINE",
+            "OFFLINE"
+          ]
+        },
+        "uid": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "vendor": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
