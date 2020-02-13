@@ -1,0 +1,278 @@
+{
+	"info": {
+		"_postman_id": "8456ca73-c1e1-4fae-839c-4477cbfde2de",
+		"name": "GATEWAY",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "SWAGGER",
+			"item": [
+				{
+					"name": "SWAGGER API DOC's",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/v2/api-docs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v2",
+								"api-docs"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "GATEWAY DETAILS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/gateway/detail/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"gateway",
+						"detail",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL GATEWAYS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/gateway/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"gateway",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE GATEWAY",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNTgxMDk1NTMyfQ.9Ub-n5ea0LrGJd7lkukOiaBuZbLUL02BtVYlB0NJEL0JlgzfC8Qf65CxqJSxfWBiBw6svrC-6sPfutg8L-LY6g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n\t\"serialNumber\": \"BKSJUALKI112HBGQUHA\",\r\n\t\"name\": \"acr-work.sparta.net\",\r\n\t\"ipAddress\": \"35.212.22.220\",\r\n\t\"peripheralDevices\" : [\r\n\t\t{\r\n\t\t\t\"uid\": \"95981\",\r\n\t\t\t\"vendor\": \"Acronus System Corp\",\r\n\t\t\t\"dateCreated\": \"2020-02-02T12:00:00\",\r\n\t\t\t\"status\": \"ONLINE\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"uid\": \"2122345\",\r\n\t\t\t\"vendor\": \"Acronus System Corp\",\r\n\t\t\t\"dateCreated\": \"2020-02-02T12:00:00\",\r\n\t\t\t\"status\": \"ONLINE\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"uid\": \"35247\",\r\n\t\t\t\"vendor\": \"Acronus System Corp\",\r\n\t\t\t\"dateCreated\": \"2020-02-02T12:00:00\",\r\n\t\t\t\"status\": \"ONLINE\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"uid\": \"778942\",\r\n\t\t\t\"vendor\": \"Acronus System Corp\",\r\n\t\t\t\"dateCreated\": \"2020-02-02T12:00:00\",\r\n\t\t\t\"status\": \"ONLINE\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"uid\": \"65423\",\r\n\t\t\t\"vendor\": \"Acronus System Corp\",\r\n\t\t\t\"dateCreated\": \"2020-02-02T12:00:00\",\r\n\t\t\t\"status\": \"ONLINE\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"uid\": \"789524\",\r\n\t\t\t\"vendor\": \"Acronus System Corp\",\r\n\t\t\t\"dateCreated\": \"2020-02-02T12:00:00\",\r\n\t\t\t\"status\": \"ONLINE\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"uid\": \"3731\",\r\n\t\t\t\"vendor\": \"Acronus System Corp\",\r\n\t\t\t\"dateCreated\": \"2020-02-02T12:00:00\",\r\n\t\t\t\"status\": \"OFFLINE\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"uid\": \"2831124\",\r\n\t\t\t\"vendor\": \"Acronus System Corp\",\r\n\t\t\t\"dateCreated\": \"2020-02-02T12:00:00\",\r\n\t\t\t\"status\": \"ONLINE\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"uid\": \"223123\",\r\n\t\t\t\"vendor\": \"Acronus System Corp\",\r\n\t\t\t\"dateCreated\": \"2020-02-02T12:00:00\",\r\n\t\t\t\"status\": \"ONLINE\"\r\n\t\t}\r\n\t]\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/gateway/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"gateway",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE GATEWAY",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"uid\": 9598134,\r\n    \"vendor\": \"Acronus System Corp\",\r\n    \"dateCreated\": \"2020-02-02T12:00:00.000+0000\",\r\n    \"status\": \"ONLINE\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/gateway/update/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"gateway",
+						"update",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE OTHER GATEWAY",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNTgxMDk1NTMyfQ.9Ub-n5ea0LrGJd7lkukOiaBuZbLUL02BtVYlB0NJEL0JlgzfC8Qf65CxqJSxfWBiBw6svrC-6sPfutg8L-LY6g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n\t\"serialNumber\": \"BKSJUALKI112HBGQUPO\",\r\n\t\"name\": \"acr-work.yakarta.net\",\r\n\t\"ipAddress\": \"36.212.220.224\",\r\n\t\"peripheralDevices\" : [\r\n\t\t{\r\n\t\t\t\"uid\": \"95981798\",\r\n\t\t\t\"vendor\": \"Acronus System Corp\",\r\n\t\t\t\"dateCreated\": \"2020-02-02T12:00:00\",\r\n\t\t\t\"status\": \"ONLINE\"\r\n\t\t}\r\n\t]\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/gateway/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"gateway",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE YAKARTA GATEWAY",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"uid\": 9598134,\r\n    \"vendor\": \"Acronus System Corp\",\r\n    \"dateCreated\": \"2020-02-02T12:00:00.000+0000\",\r\n    \"status\": \"OFFLINE\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/gateway/update/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"gateway",
+						"update",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE YAKARTA DEVICE",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"uid\": 9598134,\r\n    \"vendor\": \"Acronus System Corp\",\r\n    \"dateCreated\": \"2020-02-02T12:00:00.000+0000\",\r\n    \"status\": \"OFFLINE\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/gateway/delete/4/16",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"gateway",
+						"delete",
+						"4",
+						"16"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
