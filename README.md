@@ -88,3 +88,30 @@ all|GET|GatewayDto|Body| Get all gateway
 detail/{id}|GET|Id|PathVariable|Get detail of gateway
 update/{id}|PUT|Id, PeripheralDeviceDto|PathVariable, Body|Add device to gateway
 delete/{idGateway}/{idPeripheral}|DELETE|Id, Id, PeripheralDeviceDto|PathVariable, Body|Delete device to gateway
+
+###ANOTHER MYSQL SERVER ALTERNATIVE
+
+If there are inconveniences when installing MySQL, you can use an online service that hosts a MySQL server.
+
+    Server: remotemysql.com
+    Port: 3306
+    User: 0HvBSSKVvS
+    Password: SqAwXvFE0S
+    Schema: 0HvBSSKVvS
+    
+####Configuration variables to change if using this MySQL alternative
+
+   - Configuration of spring database connection 
+        
+    spring.datasource.hikari.jdbc-url=jdbc:mysql://remotemysql.com:3306/0HvBSSKVvS?useSSL=false&serverTimezone=UTC
+    spring.datasource.jdbc-url=jdbc:mysql://remotemysql.com:3306/0HvBSSKVvS?useSSL=false&serverTimezone=UTC
+    spring.datasource.username=0HvBSSKVvS
+    spring.datasource.password=SqAwXvFE0S
+
+   - Configuration for flyway
+    
+    spring.flyway.url=jdbc:mysql://remotemysql.com:3306/0HvBSSKVvS?useSSL=false&serverTimezone=UTC
+    spring.flyway.locations=classpath:/db/migration
+    spring.flyway.user=0HvBSSKVvS
+    spring.flyway.password=SqAwXvFE0S
+    spring.flyway.schemas=0HvBSSKVvS
