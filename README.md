@@ -4,9 +4,25 @@
 ###REQUIREMENTS
 
 - **MySQL 8.0.19 MySQL Community Server - GPL**
+    
+        https://cdn.mysql.com/archives/mysql-installer/mysql-installer-web-community-8.0.18.0.msi
+    
 - **Java version "1.8.0_241"**
 - **Apache Maven 3.6.3**
+
+        https://www-us.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.zip
+
 - **Database Schema created**: (the default schema name is **gateways_manage**)
+        
+        CREATE DATABASE `gateways_manage`
+         /*!40100 DEFAULT CHARACTER SET utf8 */ 
+         /*!80016 DEFAULT ENCRYPTION=''N'' */
+
+###DEVELOPMENT TOOLS USED
+
+- IntelliJ IDEA 2019.3.2
+- Postman 7.17.0
+- MySQL Workbench 8.0.19
 
 ###REGARDING THE PROJECT
  This project has Flyway configured as a tool for database migration.
