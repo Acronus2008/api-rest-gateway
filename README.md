@@ -23,6 +23,13 @@
 - IntelliJ IDEA 2019.3.2
 - Postman 7.17.0
 - MySQL Workbench 8.0.19
+- GitKraken 4.0.4
+- Git Bash
+- Github
+
+### HOW TO DOWNLOAD OR CLONE THE REPOSITORY
+
+    git clone https://github.com/Acronus2008/api-rest-gateway.git
 
 ###REGARDING THE PROJECT
  This project has Flyway configured as a tool for database migration.
