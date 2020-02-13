@@ -2,7 +2,7 @@ package com.ex.gateways.manage.restgateways.controller;
 
 import com.ex.gateways.manage.restgateways.dto.GatewayDto;
 import com.ex.gateways.manage.restgateways.dto.event.MessageEventDto;
-import com.ex.gateways.manage.restgateways.dto.event.MessageEventType;
+import com.ex.gateways.manage.restgateways.utils.MessageEventType;
 import com.ex.gateways.manage.restgateways.error.GatewayException;
 import com.ex.gateways.manage.restgateways.error.GatewayNotFoundException;
 import com.ex.gateways.manage.restgateways.error.GatewaySameIpAddressException;
