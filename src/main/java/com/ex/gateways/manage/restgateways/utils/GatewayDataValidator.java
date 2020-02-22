@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 public class GatewayDataValidator {
 
     public void validateGatewayData(Gateway gateway) throws GatewayException {
-        validator(!(gateway.getPeripheralDevices().size() < 10), "Only up to 10 devices are allowed per gateway");
+        validator(gateway.getPeripheralDevices().size() > 10, "Only up to 10 devices are allowed per gateway");
 
         validateGatewayIpAddress(gateway.getIpAddress());
 
