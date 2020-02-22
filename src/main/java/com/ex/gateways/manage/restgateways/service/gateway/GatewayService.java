@@ -2,6 +2,7 @@ package com.ex.gateways.manage.restgateways.service.gateway;
 
 import com.ex.gateways.manage.restgateways.dto.GatewayDto;
 import com.ex.gateways.manage.restgateways.dto.event.MessageEventDto;
+import com.ex.gateways.manage.restgateways.error.GatewaySameSerialNumberException;
 import com.ex.gateways.manage.restgateways.utils.MessageEventType;
 import com.ex.gateways.manage.restgateways.error.GatewayException;
 import com.ex.gateways.manage.restgateways.error.GatewayNotFoundException;
@@ -23,12 +24,16 @@ public class GatewayService extends GatewayHelper implements IGatewayService {
     private GatewayRepository gatewayRepository;
 
     @Override
-    public MessageEventDto addGateway(Gateway gateway) throws GatewaySameIpAddressException, GatewayException {
+    public MessageEventDto addGateway(Gateway gateway) throws GatewaySameIpAddressException, GatewaySameSerialNumberException, GatewayException {
         try {
             validateGatewayData(gateway);
 
             if (existGatewayWithSameAddress(gateway.getIpAddress())) {
                 throw new GatewaySameIpAddressException(String.format("A gateway with the same ip address:%s exist", gateway.getIpAddress()));
+            }
+
+            if (existGatewayWithSameSerialNumber(gateway.getSerialNumber())) {
+                throw new GatewaySameSerialNumberException(String.format("A gateway with the same serial number:%s exist", gateway.getSerialNumber()));
             }
 
             setGatewayToPeripheralDevicesBeforeCreate(gateway);
@@ -60,6 +65,17 @@ public class GatewayService extends GatewayHelper implements IGatewayService {
             throw new GatewayNotFoundException(String.format("There is no gateway with this id %s", idGateway));
         } catch (Exception e) {
             throw new GatewayException(e.getMessage());
+        }
+    }
+
+
+
+    private boolean existGatewayWithSameSerialNumber(String serialNumber) {
+        try {
+            gatewayRepository.findGatewayBySerialNumber(serialNumber).get();
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
         }
     }
 

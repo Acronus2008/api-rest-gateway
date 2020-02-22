@@ -115,3 +115,8 @@ If there are inconveniences when installing MySQL, you can use an online service
     spring.flyway.user=0HvBSSKVvS
     spring.flyway.password=SqAwXvFE0S
     spring.flyway.schemas=0HvBSSKVvS
+    
+    
+###Example of valid name for gateways
+
+    3SquareBand.com | asp.net | army.mil

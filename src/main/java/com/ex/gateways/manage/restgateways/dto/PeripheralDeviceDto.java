@@ -2,9 +2,10 @@ package com.ex.gateways.manage.restgateways.dto;
 
 import com.ex.gateways.manage.restgateways.utils.GatewayStatus;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class PeripheralDeviceDto {
+public class PeripheralDeviceDto implements Serializable {
 
     private long uid;
     private String vendor;

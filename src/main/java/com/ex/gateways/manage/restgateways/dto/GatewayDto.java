@@ -1,8 +1,9 @@
 package com.ex.gateways.manage.restgateways.dto;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class GatewayDto {
+public class GatewayDto implements Serializable {
     private String serialNumber;
     private String name;
     private String ipAddress;

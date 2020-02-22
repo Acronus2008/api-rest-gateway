@@ -2,6 +2,7 @@ package com.ex.gateways.manage.restgateways.controller;
 
 import com.ex.gateways.manage.restgateways.dto.GatewayDto;
 import com.ex.gateways.manage.restgateways.dto.event.MessageEventDto;
+import com.ex.gateways.manage.restgateways.error.GatewaySameSerialNumberException;
 import com.ex.gateways.manage.restgateways.utils.MessageEventType;
 import com.ex.gateways.manage.restgateways.error.GatewayException;
 import com.ex.gateways.manage.restgateways.error.GatewayNotFoundException;
@@ -47,6 +48,8 @@ public class ApiGatewayController {
             MessageEventDto messageEventDto = gatewayService.addGateway(gateway);
             return new ResponseEntity<>(messageEventDto, HttpStatus.CREATED);
         } catch (GatewaySameIpAddressException e) {
+            return new ResponseEntity<>(new MessageEventDto(e.getMessage(), MessageEventType.ERROR, new Date()), HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (GatewaySameSerialNumberException e) {
             return new ResponseEntity<>(new MessageEventDto(e.getMessage(), MessageEventType.ERROR, new Date()), HttpStatus.INTERNAL_SERVER_ERROR);
         } catch (GatewayException e) {
             return new ResponseEntity<>(new MessageEventDto(e.getMessage(), MessageEventType.ERROR, new Date()), HttpStatus.INTERNAL_SERVER_ERROR);
